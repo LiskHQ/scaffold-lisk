@@ -25,12 +25,12 @@ export const Logo: React.FC<Props> = ({}) => {
           y2="24"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#E84D31" />
-          <stop offset="1" stop-color="#E84D31" stop-opacity="0" />
+          <stop stopColor="#E84D31" />
+          <stop offset="1" stopColor="#E84D31" stopOpacity="0" />
         </linearGradient>
         <linearGradient id="paint1_linear_3560_2908" x1="39" y1="32.5" x2="8" y2="31.5" gradientUnits="userSpaceOnUse">
-          <stop stop-color="#E84D31" stop-opacity="0" />
-          <stop offset="1" stop-color="#E84D31" />
+          <stop stopColor="#E84D31" stopOpacity="0" />
+          <stop offset="1" stopColor="#E84D31" />
         </linearGradient>
       </defs>
     </svg>
