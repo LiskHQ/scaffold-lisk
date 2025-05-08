@@ -17,7 +17,7 @@ export const NETWORKS_EXTRA_DATA: Record<string, ChainAttributes> = {
     color: "#b8af0c",
   },
   [liskSepolia.id]: {
-    color: "#613FFF",
+    color: "#E84D31",
   },
   [chains.mainnet.id]: {
     color: "#ff8b9e",
