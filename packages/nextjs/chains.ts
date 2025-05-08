@@ -1,5 +1,4 @@
 import { defineChain } from "viem";
-import * as primitiveChains from "viem/chains";
 
 export const liskSepolia = /*#__PURE__*/ defineChain({
   id: 4202,
@@ -26,7 +25,3 @@ export const liskSepolia = /*#__PURE__*/ defineChain({
   },
   testnet: true,
 });
-
-const chains = [liskSepolia, primitiveChains.hardhat, primitiveChains.optimismSepolia, primitiveChains.baseSepolia];
-
-export default chains;
