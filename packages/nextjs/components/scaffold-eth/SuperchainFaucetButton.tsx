@@ -8,7 +8,7 @@ import opLogo from "../assets/optimism_logo.png";
  */
 export const SuperchainFaucetButton = () => {
   const openSuperchainFaucet = () => {
-    window.open("https://app.optimism.io/faucet?utm_source=scaffoldop", "_blank");
+    window.open("https://console.optimism.io/faucet", "_blank");
   };
 
   return (
