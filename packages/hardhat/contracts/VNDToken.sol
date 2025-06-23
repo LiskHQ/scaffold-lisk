@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 contract VNDToken is ERC20 {
 	// 1. Token Basics
-	uint256 public constant MAX_SUPPLY = 50_000_000 * 10 ** 18; // 100 million tokens
+	uint256 public constant MAX_SUPPLY = 50_000_000 * 10 ** 18; // 50 million tokens
 
 	// 2. Charity System
 	mapping(address => bool) public verifiedCharities;

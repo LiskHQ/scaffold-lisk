@@ -8,31 +8,21 @@ type Props = React.ComponentProps<"svg"> & {
 /**
  * Lisk logo.
  */
-export const Logo: React.FC<Props> = ({}) => {
+export const Logo: React.FC<Props> = ({ color = "#fff", size = 32 }) => {
   return (
-    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect width="48" height="48" fill="url(#paint0_linear_3560_2908)" />
-      <path
-        d="M23.5182 7L8 31.7208L16.921 40.9983L30.0984 41L39 31.7208L23.5182 7Z"
-        fill="url(#paint1_linear_3560_2908)"
+    <svg
+      id="Layer_1"
+      xmlns="http://www.w3.org/2000/svg"
+      version="1.1"
+      width={size}
+      height={size}
+      viewBox="0 0 229.1 259"
+    >
+      <polygon style={{ fill: color }} points="114.4 0 88.5 42.9 173.7 182.5 102.4 259 162.8 259 229.1 187.9 114.4 0" />
+      <polygon
+        style={{ fill: color }}
+        points="86.6 215.9 55.5 182.5 107.8 96.6 81.7 53.9 0 187.9 66.3 259 88.3 259 128.7 215.9 86.6 215.9"
       />
-      <defs>
-        <linearGradient
-          id="paint0_linear_3560_2908"
-          x1="48"
-          y1="24"
-          x2="1.26338e-06"
-          y2="24"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop stopColor="#E84D31" />
-          <stop offset="1" stopColor="#E84D31" stopOpacity="0" />
-        </linearGradient>
-        <linearGradient id="paint1_linear_3560_2908" x1="39" y1="32.5" x2="8" y2="31.5" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#E84D31" stopOpacity="0" />
-          <stop offset="1" stopColor="#E84D31" />
-        </linearGradient>
-      </defs>
     </svg>
   );
 };
