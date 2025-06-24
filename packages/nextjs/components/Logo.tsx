@@ -8,7 +8,7 @@ type Props = React.ComponentProps<"svg"> & {
 /**
  * Lisk logo.
  */
-export const Logo: React.FC<Props> = ({ color = "#fff", size = 32 }) => {
+export const Logo: React.FC<Props> = ({ color = "#FFFFFF", size = 32, ...rest }) => {
   return (
     <svg
       id="Layer_1"
@@ -17,6 +17,7 @@ export const Logo: React.FC<Props> = ({ color = "#fff", size = 32 }) => {
       width={size}
       height={size}
       viewBox="0 0 229.1 259"
+      {...rest}
     >
       <polygon style={{ fill: color }} points="114.4 0 88.5 42.9 173.7 182.5 102.4 259 162.8 259 229.1 187.9 114.4 0" />
       <polygon
