@@ -1,10 +1,9 @@
-import { WriteContractResult, getPublicClient } from "@wagmi/core";
 import { Hash, SendTransactionParameters, TransactionReceipt, WalletClient } from "viem";
-import { useWalletClient } from "wagmi";
+import { usePublicClient, useWalletClient } from "wagmi";
 import { getBlockExplorerTxLink, getParsedError, notification } from "~~/utils/scaffold-eth";
 
 type TransactionFunc = (
-  tx: (() => Promise<WriteContractResult>) | (() => Promise<Hash>) | SendTransactionParameters,
+  tx: (() => Promise<Hash | { hash: Hash }>) | SendTransactionParameters,
   options?: {
     onBlockConfirmation?: (txnReceipt: TransactionReceipt) => void;
     blockConfirmations?: number;
@@ -35,6 +34,7 @@ const TxnNotification = ({ message, blockExplorerLink }: { message: string; bloc
 export const useTransactor = (_walletClient?: WalletClient): TransactionFunc => {
   let walletClient = _walletClient;
   const { data } = useWalletClient();
+  const publicClient = usePublicClient();
   if (walletClient === undefined && data) {
     walletClient = data;
   }
@@ -47,21 +47,16 @@ export const useTransactor = (_walletClient?: WalletClient): TransactionFunc => 
     }
 
     let notificationId = null;
-    let transactionHash: Awaited<WriteContractResult>["hash"] | undefined = undefined;
+    let transactionHash: Hash | undefined = undefined;
     try {
       const network = await walletClient.getChainId();
       // Get full transaction from public client
-      const publicClient = getPublicClient();
 
       notificationId = notification.loading(<TxnNotification message="Awaiting for user confirmation" />);
       if (typeof tx === "function") {
         // Tx is already prepared by the caller
-        const result = await tx();
-        if (typeof result === "string") {
-          transactionHash = result;
-        } else {
-          transactionHash = result.hash;
-        }
+        const prepared = await tx();
+        transactionHash = (typeof prepared === "string" ? (prepared as Hash) : prepared.hash);
       } else if (tx != null) {
         transactionHash = await walletClient.sendTransaction(tx);
       } else {
